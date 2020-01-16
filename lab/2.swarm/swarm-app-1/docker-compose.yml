@@ -14,8 +14,9 @@ services:
     privileged: true
     tty: true
     ports:
-      - 8000:80
+      - 8000:8000
       - 9000:9000
+      - 5001:5001
     depends_on: 
       - registry
     expose: 
@@ -25,7 +26,7 @@ services:
       - "./stack:/stack"
 
   worker01:
-    container_name: work01
+    container_name: worker01
     image: docker:19.03.5-dind
     privileged: true
     tty: true
@@ -39,7 +40,7 @@ services:
     command: "--insecure-registry registry:5000"
 
   worker02:
-    container_name: work02
+    container_name: worker02
     image: docker:19.03.5-dind
     privileged: true
     tty: true
@@ -53,7 +54,7 @@ services:
     command: "--insecure-registry registry:5000"
 
   worker03:
-    container_name: work03
+    container_name: worker03
     image: docker:19.03.5-dind
     privileged: true
     tty: true
